@@ -3,17 +3,10 @@ package com.tevioapp.vendor.repositary.auth
 import android.content.Context
 import com.tevioapp.vendor.data.AppPreferences
 import com.tevioapp.vendor.data.AuthResponse
-import com.tevioapp.vendor.data.Campaigns
 import com.tevioapp.vendor.data.DeliveryTimingOption
-import com.tevioapp.vendor.data.DeliveryTypeOption
 import com.tevioapp.vendor.data.DocumentResponse
-import com.tevioapp.vendor.data.DressKit
-import com.tevioapp.vendor.data.JoiningBenefitsOption
 import com.tevioapp.vendor.data.PayoutResponse
 import com.tevioapp.vendor.data.SafetyOption
-import com.tevioapp.vendor.data.Ticket
-import com.tevioapp.vendor.data.TrainingVideo
-import com.tevioapp.vendor.data.VideoStats
 import com.tevioapp.vendor.data.common.FileUploadResource
 import com.tevioapp.vendor.data.common.MediaFile
 import com.tevioapp.vendor.data.common.Profile
@@ -101,10 +94,6 @@ class AuthRepoImpl @Inject constructor(
 
     }
 
-    override fun apiUpdateTrainingVideoStats(list: List<VideoStats>): Single<SimpleApiResponse> {
-        return api.apiUpdateTrainingVideoStats(list.toApplicationJsonBody())
-
-    }
 
     override fun apiSetDocumentsInfo(request: JSONObject): Single<SimpleApiResponse> {
         return api.apiSetDocumentsInfo(request.toApplicationJsonBody())
@@ -139,25 +128,8 @@ class AuthRepoImpl @Inject constructor(
         return api.apiDeleteAccount()
     }
 
-    override fun apiDeliveryTypeOptionList(): Single<ApiResponse<List<DeliveryTypeOption>>> {
-        return api.apiDeliveryTypeOptionList()
-    }
-
-
     override fun apiDeliveryTimingOptionList(): Single<ApiResponse<List<DeliveryTimingOption>>> {
         return api.apiDeliveryTimingOptionList()
-    }
-
-    override fun apiJoiningBenefitsOptionList(): Single<ApiResponse<List<JoiningBenefitsOption>>> {
-        return api.apiJoiningBenefitsOptionList()
-    }
-
-    override fun apiDressKitList(): Single<ApiResponse<List<DressKit>>> {
-        return api.apiDressKitList()
-    }
-
-    override fun apiTrainingVideoList(): Single<ApiResponse<List<TrainingVideo>>> {
-        return api.apiTrainingVideoList()
     }
 
     override fun apiUploadMedia(file: MediaFile): Flowable<FileUploadResource<String>> {
@@ -224,19 +196,5 @@ class AuthRepoImpl @Inject constructor(
         return api.apiSaveRecording(request.toApplicationJsonBody())
     }
 
-    override fun apiTicketList(type: String): Single<PagingResponse<List<Ticket>>> {
-        return api.apiTicketList(type)
-    }
 
-    override fun apiTicketDetail(ticketId: String): Single<ApiResponse<Ticket>> {
-        return api.apiTicketDetail(ticketId)
-    }
-
-    override fun apiCampaignsList(text: String): Single<ApiResponse<List<Campaigns>>> {
-        return api.apiCampaignsList(text)
-    }
-
-    override fun apiCampaignsDetail(id: String): Single<ApiResponse<Campaigns>> {
-      return api.apiCampaignsDetail(id)
-    }
 }

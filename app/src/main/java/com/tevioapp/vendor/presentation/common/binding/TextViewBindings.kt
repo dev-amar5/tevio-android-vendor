@@ -13,9 +13,6 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.google.android.libraries.places.api.model.AutocompletePrediction
 import com.tevioapp.vendor.R
-import com.tevioapp.vendor.data.Campaigns
-import com.tevioapp.vendor.data.Order
-import com.tevioapp.vendor.data.Ticket
 import com.tevioapp.vendor.presentation.common.compoundviews.Milestone
 import com.tevioapp.vendor.presentation.common.compoundviews.MilestoneProgressView
 import com.tevioapp.vendor.utility.AppConstants.FORMAT_DATE_MEDIUM
@@ -216,29 +213,6 @@ object TextViewBindings {
         }
     }
 
-
-    @JvmStatic
-    @BindingAdapter(
-        value = ["order_status"], requireAll = false
-    )
-    fun setOrderStatus(
-        textView: TextView,
-        order: Order?,
-    ) {
-        StatusHelper.setOrderStatusView(textView, order)
-    }
-
-    @JvmStatic
-    @BindingAdapter(
-        value = ["ticket_status"], requireAll = false
-    )
-    fun setTicketStatus(
-        textView: TextView,
-        ticket: Ticket?,
-    ) {
-        StatusHelper.setTicketStatusView(textView, ticket)
-    }
-
     @JvmStatic
     @BindingAdapter(
         value = ["custom_text_color"], requireAll = false
@@ -260,58 +234,5 @@ object TextViewBindings {
         textView.setTextColor(color)
     }
 
-    @JvmStatic
-    @BindingAdapter(
-        value = ["campaign_time_info"], requireAll = false
-    )
-    fun setCampaignTimeInfo(
-        textView: TextView,
-        timeInfo: Campaigns.TimeInfo?,
-    ) {
-        val daysLeft = timeInfo?.daysLeft
-        if (daysLeft != null) {
-            textView.text = buildString {
-                append(daysLeft.toString())
-                append(" ", "Days Left")
-            }
-        } else {
-            textView.text = ""
-        }
-    }
-
-
-    @JvmStatic
-    @BindingAdapter(
-        value = ["milestone_info"], requireAll = false
-    )
-    fun setMilestoneInfo(
-        view: MilestoneProgressView,
-        bean: Campaigns?,
-    ) {
-        val list = bean?.progress?.milestones.orEmpty()
-        if (list.isNotEmpty()) {
-            view.isVisible = true
-            val percent = bean?.progress?.getProgressPercent() ?: 0F
-            val configTop = SpanConfig(
-                bold = true,
-                typeface = ResourcesCompat.getFont(view.context, R.font.montserrat_medium)
-            )
-            val configBottom = SpanConfig(
-                typeface = ResourcesCompat.getFont(
-                    view.context, R.font.montserrat_regular
-                )
-            )
-            view.setData(
-                list.map {
-                    Milestone(
-                        it.getDisplayAmount().setMultiSpan(configTop),
-                        it.getDisplayLabel().setMultiSpan(configBottom)
-                    )
-                }, percent
-            )
-        } else {
-            view.isVisible = false
-        }
-    }
 }
 

@@ -2,11 +2,7 @@ package com.tevioapp.vendor.presentation.views.auth
 
 import android.content.Context
 import com.tevioapp.vendor.data.AuthResponse
-import com.tevioapp.vendor.data.DeliveryKitDetail
 import com.tevioapp.vendor.data.DeliveryTimingOption
-import com.tevioapp.vendor.data.DeliveryTypeOption
-import com.tevioapp.vendor.data.DressKit
-import com.tevioapp.vendor.data.JoiningBenefitsOption
 import com.tevioapp.vendor.data.PhoneDetails
 import com.tevioapp.vendor.data.common.Profile
 import com.tevioapp.vendor.presentation.common.base.BaseViewModel
@@ -76,25 +72,10 @@ class AuthViewModel @Inject constructor(
         }).apiSubscription(this).addToCompositeDisposable()
     }
 
-    fun apiDeliveryTypeOptionList() = SingleRequestEvent<List<DeliveryTypeOption>>().apply {
-        authRepo.apiDeliveryTypeOptionList().apiSubscription(this).addToCompositeDisposable()
-    }
-
     fun apiDeliveryTimingOptionList() = SingleRequestEvent<List<DeliveryTimingOption>>().apply {
         authRepo.apiDeliveryTimingOptionList().apiSubscription(this).addToCompositeDisposable()
     }
 
-    fun apiJoiningBenefitsOptionList() = SingleRequestEvent<List<JoiningBenefitsOption>>().apply {
-        authRepo.apiJoiningBenefitsOptionList().apiSubscription(this).addToCompositeDisposable()
-    }
-
-    fun apiDressKitList() = SingleRequestEvent<List<DressKit>>().apply {
-        authRepo.apiDressKitList().apiSubscription(this).addToCompositeDisposable()
-    }
-
-    fun apiDeliveryKitOrderDetail() = SingleRequestEvent<DeliveryKitDetail>().apply {
-        orderRepo.apiDeliveryKitOrderDetail().apiSubscription(this).addToCompositeDisposable()
-    }
 
     fun apiOrderDeliveryKit(jsonObject: JSONObject) = SingleRequestEvent<Unit>().apply {
         orderRepo.apiOrderDeliveryKit(jsonObject).simpleSubscription(this)

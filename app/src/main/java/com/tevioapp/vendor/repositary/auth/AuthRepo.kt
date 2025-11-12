@@ -2,17 +2,10 @@ package com.tevioapp.vendor.repositary.auth
 
 import com.tevioapp.vendor.data.AppPreferences
 import com.tevioapp.vendor.data.AuthResponse
-import com.tevioapp.vendor.data.Campaigns
 import com.tevioapp.vendor.data.DeliveryTimingOption
-import com.tevioapp.vendor.data.DeliveryTypeOption
 import com.tevioapp.vendor.data.DocumentResponse
-import com.tevioapp.vendor.data.DressKit
-import com.tevioapp.vendor.data.JoiningBenefitsOption
 import com.tevioapp.vendor.data.PayoutResponse
 import com.tevioapp.vendor.data.SafetyOption
-import com.tevioapp.vendor.data.Ticket
-import com.tevioapp.vendor.data.TrainingVideo
-import com.tevioapp.vendor.data.VideoStats
 import com.tevioapp.vendor.data.common.FileUploadResource
 import com.tevioapp.vendor.data.common.MediaFile
 import com.tevioapp.vendor.data.common.Profile
@@ -43,14 +36,9 @@ interface AuthRepo {
     fun apiSetDocumentsInfo(request: JSONObject): Single<SimpleApiResponse>
     fun apiGetDocumentsInfo(): Single<ApiResponse<DocumentResponse>>
     fun apiUpdateProfilePic(request: JSONObject): Single<SimpleApiResponse>
-    fun apiDeliveryTypeOptionList(): Single<ApiResponse<List<DeliveryTypeOption>>>
 
     fun apiDeliveryTimingOptionList(): Single<ApiResponse<List<DeliveryTimingOption>>>
     fun apiSetWorkSettings(request: JSONObject): Single<SimpleApiResponse>
-    fun apiJoiningBenefitsOptionList(): Single<ApiResponse<List<JoiningBenefitsOption>>>
-    fun apiDressKitList(): Single<ApiResponse<List<DressKit>>>
-    fun apiTrainingVideoList(): Single<ApiResponse<List<TrainingVideo>>>
-    fun apiUpdateTrainingVideoStats(list: List<VideoStats>): Single<SimpleApiResponse>
     fun apiUpdateLocation(request: JSONObject): Single<SimpleApiResponse>
     fun apiDeleteMedia(urls: JSONArray): Single<SimpleApiResponse>
 
@@ -63,8 +51,6 @@ interface AuthRepo {
     fun apiSaveRecording(request: JSONObject): Single<SimpleApiResponse>
     fun apiReasonTypeList(type: String): Single<ApiResponse<List<TitleDescription>>>
     fun apiCancelDelivery(request: JSONObject): Single<SimpleApiResponse>
-    fun apiTicketList(type: String): Single<PagingResponse<List<Ticket>>>
-    fun apiTicketDetail(ticketId: String): Single<ApiResponse<Ticket>>
-    fun apiCampaignsList(text: String):  Single<ApiResponse<List<Campaigns>>>
-    fun apiCampaignsDetail(id: String):  Single<ApiResponse<Campaigns>>
+
+
 }

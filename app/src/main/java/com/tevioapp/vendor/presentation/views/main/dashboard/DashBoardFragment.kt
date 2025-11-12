@@ -189,30 +189,30 @@ class DashBoardFragment : BaseFragment<FragmentDashboardBinding>() {
     }
 
     private fun setOrderStatusView() = with(binding.vGreenButton) {
-        val courierStatus = dataProvider.courierStatus
-        if (courierStatus?.status.orEmpty() != Enums.RIDER_STATUS_ONLINE) {
-            animateVisibility(false)
-            return@with
-        }
-        val activeOrders = courierStatus?.activeOrders.orEmpty()
-        val availableOrderCount = courierStatus?.availableOrders.orEmpty().count()
-        if (activeOrders.isNotEmpty()) {
-            setText("${activeOrders.count()} Active Order")
-            setOnClickListener {
-                activeOrders.getOrNull(0)?.let {
-                    navigateToActiveOrderScreen(it.id.orEmpty())
-                }
-            }
-            animateVisibility(true)
-        } else if (availableOrderCount > 0) {
-            setText("$availableOrderCount Incoming Orders")
-            setOnClickListener {
-                navigateToNewOrderScreen()
-            }
-            animateVisibility(true)
-        } else {
-            animateVisibility(false)
-        }
+//        val courierStatus = dataProvider.courierStatus
+//        if (courierStatus?.status.orEmpty() != Enums.RIDER_STATUS_ONLINE) {
+//            animateVisibility(false)
+//            return@with
+//        }
+//       // val activeOrders = courierStatus?.activeOrders.orEmpty()
+//        val availableOrderCount = courierStatus?.availableOrders.orEmpty().count()
+//        if (activeOrders.isNotEmpty()) {
+//            setText("${activeOrders.count()} Active Order")
+//            setOnClickListener {
+//                activeOrders.getOrNull(0)?.let {
+//                    navigateToActiveOrderScreen(it.id.orEmpty())
+//                }
+//            }
+//            animateVisibility(true)
+//        } else if (availableOrderCount > 0) {
+//            setText("$availableOrderCount Incoming Orders")
+//            setOnClickListener {
+//                navigateToNewOrderScreen()
+//            }
+//            animateVisibility(true)
+//        } else {
+//            animateVisibility(false)
+  //      }
     }
 
 
@@ -268,8 +268,8 @@ class DashBoardFragment : BaseFragment<FragmentDashboardBinding>() {
     }
 
     private fun updateLocationService() {
-        dataProvider.emitActiveOrders(
-            dataProvider.courierStatus?.activeOrders.orEmpty().map { it.id.orEmpty() })
+//        dataProvider.emitActiveOrders(
+//            dataProvider.courierStatus?.activeOrders.orEmpty().map { it.id.orEmpty() })
     }
 
 
@@ -318,8 +318,9 @@ class DashBoardFragment : BaseFragment<FragmentDashboardBinding>() {
     }
 
     private fun isValidGOOffline(): Boolean {
-        val courierStatus = dataProvider.courierStatus ?: return false
-        return courierStatus.activeOrders.isNullOrEmpty()
+//        val courierStatus = dataProvider.courierStatus ?: return false
+//        return courierStatus.activeOrders.isNullOrEmpty()
+        return true
     }
 
     private fun navigateToNewOrderScreen() {

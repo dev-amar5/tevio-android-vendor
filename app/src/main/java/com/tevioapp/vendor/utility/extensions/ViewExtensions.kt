@@ -33,9 +33,6 @@ import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.tevioapp.vendor.R
-import com.tevioapp.vendor.data.Order
-import com.tevioapp.vendor.databinding.ItemOrderItemBinding
-import com.tevioapp.vendor.databinding.ViewOrderSummeryBinding
 import com.tevioapp.vendor.databinding.ViewShimmerLoaderBinding
 import com.tevioapp.vendor.databinding.ViewTitleExpendBinding
 import com.tevioapp.vendor.utility.log.Logger
@@ -430,28 +427,6 @@ fun ViewTitleExpendBinding.attachExpendView(view: View, expend: Boolean = true) 
         view.isVisible = view.isVisible.not()
         setExpend(view.isVisible)
     }
-}
 
-fun ViewOrderSummeryBinding.setOrderDetail(order: Order?) {
-    this.order = order
-    val storeInfo = order?.storeInfo
-    if (storeInfo != null) {
-        store.isVisible = true
-        container.removeAllViews()
-        order.menuItems?.forEach { orderItem ->
-            ItemOrderItemBinding.inflate(
-                LayoutInflater.from(
-                    root.context
-                ), container, false
-            ).apply {
-                item = orderItem
-                root.setViewMarginsRes(R.dimen._1sdp)
-                container.addView(root)
-            }
-        }
-    } else {
-        container.removeAllViews()
-        store.isVisible = false
-    }
 
 }

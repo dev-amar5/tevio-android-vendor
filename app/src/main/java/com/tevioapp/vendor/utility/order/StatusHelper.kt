@@ -6,8 +6,6 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.tevioapp.vendor.R
-import com.tevioapp.vendor.data.Order
-import com.tevioapp.vendor.data.Ticket
 import com.tevioapp.vendor.utility.Enums
 
 object StatusHelper {
@@ -102,40 +100,8 @@ object StatusHelper {
         return registrationStatuses[status.orEmpty()]
     }
 
-    fun setOrderStatusView(textView: TextView, order: Order?) {
-        if (order == null) {
-            textView.isVisible = false
-            return
-        }
-        val statusUI = getOrderStatusUI(order.cartType, order.orderStatus)
-        if (statusUI == null) {
-            textView.isVisible = false
-            return
-        }
-        textView.isVisible = true
-        textView.text = statusUI.title
-        val ctx = textView.context
-        val color = statusUI.color
-        textView.setBackgroundResource(color.background)
-        textView.setTextColor(ContextCompat.getColor(ctx, color.textColor))
-        textView.backgroundTintList = ContextCompat.getColorStateList(ctx, color.backgroundTint)
-    }
 
 
-    fun setTicketStatusView(textView: TextView, ticket: Ticket?) {
-        val statusUI = ticketStatuses[ticket?.status.orEmpty()]
-        if (statusUI == null) {
-            textView.isVisible = false
-            return
-        }
-        textView.isVisible = true
-        textView.text = statusUI.title
-        val ctx = textView.context
-        val color = statusUI.color
-        textView.setBackgroundResource(color.background)
-        textView.setTextColor(ContextCompat.getColor(ctx, color.textColor))
-        textView.backgroundTintList = ContextCompat.getColorStateList(ctx, color.backgroundTint)
-    }
 }
 
 /**

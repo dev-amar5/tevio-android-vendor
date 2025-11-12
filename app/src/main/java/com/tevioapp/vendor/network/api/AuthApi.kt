@@ -2,16 +2,10 @@ package com.tevioapp.vendor.network.api
 
 import com.tevioapp.vendor.data.AppPreferences
 import com.tevioapp.vendor.data.AuthResponse
-import com.tevioapp.vendor.data.Campaigns
 import com.tevioapp.vendor.data.DeliveryTimingOption
-import com.tevioapp.vendor.data.DeliveryTypeOption
 import com.tevioapp.vendor.data.DocumentResponse
-import com.tevioapp.vendor.data.DressKit
-import com.tevioapp.vendor.data.JoiningBenefitsOption
 import com.tevioapp.vendor.data.PayoutResponse
 import com.tevioapp.vendor.data.SafetyOption
-import com.tevioapp.vendor.data.Ticket
-import com.tevioapp.vendor.data.TrainingVideo
 import com.tevioapp.vendor.data.common.Profile
 import com.tevioapp.vendor.data.common.TitleDescription
 import com.tevioapp.vendor.network.helper.ApiResponse
@@ -65,20 +59,9 @@ interface AuthApi {
     @GET("auth/courier/personal-info")
     fun apiGetPersonalInfo(): Single<ApiResponse<Profile>>
 
-    @GET("auth/courier/preferences/delivery-options")
-    fun apiDeliveryTypeOptionList(): Single<ApiResponse<List<DeliveryTypeOption>>>
 
     @GET("auth/courier/preferences/timing-options")
     fun apiDeliveryTimingOptionList(): Single<ApiResponse<List<DeliveryTimingOption>>>
-
-    @GET("auth/courier/joining-benefits")
-    fun apiJoiningBenefitsOptionList(): Single<ApiResponse<List<JoiningBenefitsOption>>>
-
-    @GET("auth/courier/kit/details")
-    fun apiDressKitList(): Single<ApiResponse<List<DressKit>>>
-
-    @GET("auth/courier/onboarding/videos")
-    fun apiTrainingVideoList(): Single<ApiResponse<List<TrainingVideo>>>
 
     @POST("auth/courier/payout-info")
     fun apiSetPayoutInfo(@Body map: RequestBody): Single<SimpleApiResponse>
@@ -139,15 +122,4 @@ interface AuthApi {
     @POST("auth/courier/safety/save-recording")
     fun apiSaveRecording(@Body map: RequestBody): Single<SimpleApiResponse>
 
-    @GET("auth/users/support/tickets")
-    fun apiTicketList(@Query("type") type: String): Single<PagingResponse<List<Ticket>>>
-
-    @GET("auth/users/support/tickets/{ticket_id}")
-    fun apiTicketDetail(@Path("ticket_id") ticketId: String): Single<ApiResponse<Ticket>>
-
-    @GET("campaigns")
-    fun apiCampaignsList(@Query("search") search: String): Single<ApiResponse<List<Campaigns>>>
-
-    @GET("campaigns/{id}")
-    fun apiCampaignsDetail(@Path("id") id: String): Single<ApiResponse<Campaigns>>
 }

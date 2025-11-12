@@ -3,9 +3,7 @@ package com.tevioapp.vendor.repositary.order
 import android.content.Context
 import android.content.pm.PackageManager
 import com.google.android.gms.maps.model.LatLng
-import com.tevioapp.vendor.data.DeliveryKitDetail
 import com.tevioapp.vendor.data.HeatMapData
-import com.tevioapp.vendor.data.Order
 import com.tevioapp.vendor.data.common.RouteLegInfo
 import com.tevioapp.vendor.network.api.GoogleApi
 import com.tevioapp.vendor.network.api.OrderApi
@@ -25,10 +23,6 @@ class OrderRepoImpl @Inject constructor(
     private val googleApi: GoogleApi,
     @ApplicationContext val context: Context
 ) : OrderRepo {
-
-    override fun apiDeliveryKitOrderDetail(): Single<ApiResponse<DeliveryKitDetail>> {
-        return orderApi.apiDeliveryKitOrderDetail()
-    }
 
     override fun apiHeatMap(): Single<ApiResponse<List<HeatMapData>>> {
         return orderApi.apiHeatMap()
@@ -111,19 +105,6 @@ class OrderRepoImpl @Inject constructor(
             )
             message = "Mock data loaded"
         }
-    }
-
-    override fun apiOrderList(
-        type: String, pageNo: Int, limit: Int
-    ): Single<PagingResponse<List<Order>>> {
-        return orderApi.apiOrderList(
-            hashMapOf(
-                "type" to type, "page" to pageNo.toString(), "limit" to limit.toString()
-            )
-        )
-    }
-    override fun apiOrderDetail(orderId: String): Single<ApiResponse<Order>>{
-        return orderApi.apiOrderDetail(orderId)
     }
 
 }

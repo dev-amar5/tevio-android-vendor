@@ -1,7 +1,6 @@
 package com.tevioapp.vendor.presentation.views.main.dashboard
 
 import com.tevioapp.vendor.data.HeatMapData
-import com.tevioapp.vendor.data.Order
 import com.tevioapp.vendor.data.common.Profile
 import com.tevioapp.vendor.data.local.CourierStatus
 import com.tevioapp.vendor.data.local.SharedPref
@@ -39,13 +38,13 @@ class DashBoardFragmentVM @Inject constructor(
     }
 
     private fun addEventListeners() {
-        socketClient.listen<ApiResponse<Order>>(
-            event = SocketUtils.EVENT_NEW_ORDER, type = getTypeToken<ApiResponse<Order>>()
-        ).subscribe { apiResponse ->
-            apiResponse.data?.id?.let {
-                updateCourierStatus(it, true)
-            }
-        }.addToCompositeDisposable()
+//        socketClient.listen<ApiResponse<Order>>(
+//            event = SocketUtils.EVENT_NEW_ORDER, type = getTypeToken<ApiResponse<Order>>()
+//        ).subscribe { apiResponse ->
+//            apiResponse.data?.id?.let {
+//                updateCourierStatus(it, true)
+//            }
+//        }.addToCompositeDisposable()
 
         socketClient.listen<ApiResponse<String>>(
             SocketUtils.EVENT_ORDER_TAKEN, getTypeToken<ApiResponse<String>>()
