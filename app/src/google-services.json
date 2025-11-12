@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "256274459636",
+    "project_id": "tevio-443004",
+    "storage_bucket": "tevio-443004.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256274459636:android:ddbce48edc4dd1103f67a1",
+        "android_client_info": {
+          "package_name": "com.tevioapp.vendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256274459636-oev21i6jrlfkbiqlgvm8at03auhvfph1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tevioapp.vendor",
+            "certificate_hash": "3f4da6235f06021686629b45fb29a53cf159971a"
+          }
+        },
+        {
+          "client_id": "256274459636-s3mrjjjmo5mbt6m7c756f7es94lk37c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8ul7Wk-RaF1tnUYgtzIARILeZ8rV_jQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256274459636-s3mrjjjmo5mbt6m7c756f7es94lk37c9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "256274459636-8oeei1p479dv98el8ig8fcj8stj16hbm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "seasia.TevioCustomer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
