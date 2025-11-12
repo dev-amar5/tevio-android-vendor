@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/frg_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/dashboard" />
+    <item
+        android:id="@+id/frg_order_activity"
+        android:icon="@drawable/ic_clipboard"
+        android:title="@string/order_activity" />
+    <item
+        android:id="@+id/frg_wallet"
+        android:icon="@drawable/ic_wallet"
+        android:title="@string/wallet" />
+    <item
+        android:id="@+id/frg_notification"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/notification" />
+
+</menu>

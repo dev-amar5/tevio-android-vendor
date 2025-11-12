@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.auth.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vm="@{vm}" />
+
+        <include
+            android:id="@+id/view_title"
+            layout="@layout/view_left_title_line_bold14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:text="@string/follow_these_steps_to_capture_a_clear_image"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/view_title"
+            app:layout_constraintStart_toStartOf="@+id/view_title"
+            app:layout_constraintTop_toBottomOf="@+id/view_title"
+            tools:text="@string/follow_these_steps_to_capture_a_clear_image" />
+
+        <ImageView
+            android:id="@+id/iv_selfie"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/img_take_photo"
+            app:layout_constraintEnd_toEndOf="@+id/view_title"
+            app:layout_constraintStart_toStartOf="@+id/view_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_type" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:background="@color/line_dual"
+            app:layout_constraintEnd_toEndOf="@+id/view_title"
+            app:layout_constraintStart_toStartOf="@+id/view_title"
+            app:layout_constraintTop_toBottomOf="@+id/iv_selfie" />
+
+        <LinearLayout
+            android:id="@+id/ll_items"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/view_title"
+            app:layout_constraintStart_toStartOf="@+id/view_title"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <Button
+            android:id="@+id/btn_continue"
+            style="@style/ButtonSolid"
+            android:layout_width="0dp"
+            android:layout_marginVertical="@dimen/button_bottom_margin"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="@string/got_it"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/view_title"
+            app:layout_constraintStart_toStartOf="@+id/view_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

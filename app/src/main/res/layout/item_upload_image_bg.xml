@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="media"
+            type="com.tevioapp.vendor.data.common.MediaFile" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_round_corner_solid_dotted">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardCornerRadius="@dimen/_11sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    app:image_url="@{media.mediaUrl}" />
+
+
+                <LinearLayout
+                    android:id="@+id/v_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_camera"
+                        app:tint="@color/dark_green"
+                        app:visibleIfEmpty="@{media.mediaUrl}" />
+
+                    <TextView
+                        android:id="@+id/tv_add"
+                        style="@style/TextView.LightMedium"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textColor="@color/dark_green"
+                        android:textSize="@dimen/_12ssp"
+                        app:visibleIfEmpty="@{media.mediaUrl}"
+                        tools:text="Add Front" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_cross"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_cross"
+                    app:tint="@color/black"
+                    app:visibleIfNotEmpty="@{media.mediaUrl}" />
+
+            </FrameLayout>
+
+            <include
+                android:id="@+id/v_progress"
+                layout="@layout/view_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+</layout>

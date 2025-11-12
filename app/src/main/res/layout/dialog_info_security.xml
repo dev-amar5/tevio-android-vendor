@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.tevioapp.vendor.presentation.common.base.dialog.BaseCustomDialog.Listener" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin"
+        android:background="@drawable/bg_round_corner_solid"
+        android:backgroundTint="@color/card_bg_dual"
+        android:padding="@dimen/vertical_margin">
+
+        <ImageView
+            android:id="@+id/iv_cross"
+            style="@style/IconFilterCross"
+            android:importantForAccessibility="no"
+            android:onClick="@{v->callback.onClick(v)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_congratulations"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_security_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_cross"
+            app:tint="@color/orange" />
+
+        <TextView
+            android:id="@+id/tv_congratulations"
+            style="@style/TextView.Bold"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center_horizontal"
+            android:text="@string/enable_extra_security"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_congratulations" />
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/message_security"
+            android:textAlignment="center"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_congratulations" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_50sdp"
+            android:text="@string/message_security_desc"
+            android:textAlignment="center"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            style="@style/ButtonSolid"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginVertical="@dimen/button_bottom_margin"
+            android:onClick="@{v->callback.onClick(v)}"
+            android:text="@string/enable_now"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
+
+        <TextView
+            android:id="@+id/tv_skip"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:onClick="@{v->callback.onClick(v)}"
+            android:text="@string/skip_for_now"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_submit"
+            app:underline="@{true}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

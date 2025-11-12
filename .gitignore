@@ -1,0 +1,54 @@
+# Gradle files
+.gradle/
+build/
+*/build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# IDE-specific files
+.idea/
+*.iml
+
+# Keystore files (security-sensitive files)
+*.jks
+*.keystore
+
+# Log, report, or other output files
+*.log
+
+# Android Studio specific files
+captures/
+.externalNativeBuild/
+.cxx/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Java class files
+*.class
+
+# APK and mapping files
+*.apk
+*.aab
+*.mapping
+
+# Generated JSON files (e.g., Google Services configuration)
+app/google-services.json
+
+# Firebase Crashlytics
+crashlytics.properties
+crashlytics-build.properties
+
+# IntelliJ
+*.ipr
+*.iws
+
+# Built Java and Kotlin files
+*.jar
+*.war
+*.ear
+
+# Kotlin specific
+*.kotlin_module

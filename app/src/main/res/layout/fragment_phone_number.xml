@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.country.CountryCodeSheetVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_label_phone"
+            style="@style/TextView.EditTextHeader"
+            android:layout_width="0dp"
+            android:text="@string/phone_number"
+            app:drawableStartCompat="@drawable/ic_phone_call_stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Country Code Picker -->
+        <EditText
+            android:id="@+id/et_country_code"
+            style="@style/EditText.DropDown"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/edit_to_header_spacing"
+            android:hint="@string/hint_dash"
+            android:inputType="text"
+            android:onClick="@{v->vm.onClick(v)}"
+            app:layout_constraintStart_toStartOf="@id/tv_label_phone"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_phone"
+            tools:ignore="Autofill,LabelFor"
+            tools:text="+91"/>
+
+        <EditText
+            android:id="@+id/et_phone"
+            style="@style/EditText.Solid"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:digits="0123456789"
+            android:hint="@string/phone_number"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:maxLength="15"
+            app:layout_constraintEnd_toEndOf="@id/tv_label_phone"
+            app:layout_constraintStart_toEndOf="@id/et_country_code"
+            app:layout_constraintTop_toTopOf="@id/et_country_code"
+            tools:ignore="Autofill,LabelFor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

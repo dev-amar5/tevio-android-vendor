@@ -1,0 +1,49 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="text1"
+            type="String" />
+
+        <variable
+            name="text2"
+            type="String" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/v_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round_solid_2x"
+        android:backgroundTint="@color/dark_green"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_7sdp"
+        android:paddingHorizontal="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/tv_duration_1"
+            style="@style/TextView.Bold"
+            android:hint="--"
+            android:gravity="center"
+            android:text="@{text1}"
+            android:textColor="@color/white_fix"
+            android:textColorHint="@color/white_fix"
+            tools:text="99"
+            android:textSize="@dimen/_16ssp" />
+
+        <TextView
+            android:id="@+id/tv_duration_2"
+            style="@style/TextView.Regular"
+            android:hint="Min"
+            android:gravity="center"
+            android:text="@{text2}"
+            android:textColor="@color/white_fix"
+            android:textColorHint="@color/white_fix"
+            android:textSize="@dimen/_11ssp" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.location.LocationActivityVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_map"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_minus15sdp"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom_sheet"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:id="@+id/map_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <ImageView
+                android:id="@+id/iv_location_pin"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_40sdp"
+                android:adjustViewBounds="true"
+                android:elevation="@dimen/_2sdp"
+                android:src="@drawable/ic_location_pin"
+                app:layout_constraintBottom_toTopOf="@id/v_center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <View
+                android:id="@+id/v_center"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/v_select_location"
+                layout="@layout/view_selected_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:layout_constraintBottom_toTopOf="@id/iv_location_pin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_search"
+            style="@style/ButtonSolid"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginBottom="@dimen/button_bottom_margin"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="@string/search_another_location"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/v_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_top_round_white"
+            android:paddingHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_loc_type"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:src="@drawable/ic_location_solid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/orange"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_loc_name"
+                style="@style/TextView.Bold"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:hint="@string/please_wait"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_loc_type"
+                app:layout_constraintStart_toEndOf="@id/iv_loc_type"
+                app:layout_constraintTop_toTopOf="@id/iv_loc_type" />
+
+            <TextView
+                android:id="@+id/tv_loc_address"
+                style="@style/TextView.Regular"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="start"
+                android:lines="2"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_loc_type"
+                app:layout_constraintTop_toBottomOf="@id/iv_loc_type" />
+
+            <Button
+                android:id="@+id/btn_confirm"
+                style="@style/ButtonSolid"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:onClick="@{v->vm.onClick(v)}"
+                android:text="@string/confirm_location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_loc_address" />
+
+            <include
+                layout="@layout/view_shimmer_loader_thin"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_current"
+            android:layout_width="@dimen/icon_box_size"
+            android:layout_height="@dimen/icon_box_size"
+            android:layout_margin="@dimen/horizontal_margin"
+            android:background="@drawable/bg_circle_icon"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:padding="@dimen/icon_box_padding"
+            android:src="@drawable/ic_current"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom_sheet"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/v_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/toolbar_height"
+                android:onClick="@{v->vm.onClick(v)}"
+                android:paddingStart="@dimen/horizontal_margin"
+                android:paddingEnd="@dimen/_5sdp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black"
+                tools:ignore="ContentDescription" />
+
+
+            <com.tevioapp.vendor.presentation.common.compoundviews.PlaceAutocompleteView
+                android:id="@+id/pav_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/_2sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_back"
+                app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

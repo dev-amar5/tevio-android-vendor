@@ -1,0 +1,44 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/v_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_10sdp">
+
+        <com.tevioapp.vendor.presentation.common.compoundviews.RoundedProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_8sdp"
+            android:progress="45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rp_backgroundColor="@color/orange"
+            app:rp_cornerRadius="@dimen/_5sdp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextView.Header"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress"
+            tools:text="Key" />
+
+        <TextView
+            android:id="@+id/tv_value"
+            style="@style/TextView.Regular"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress"
+            app:layout_constraintTop_toTopOf="@id/tv_title"
+            tools:text="Value" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

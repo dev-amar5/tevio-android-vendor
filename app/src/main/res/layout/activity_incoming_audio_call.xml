@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="threadDetail"
+            type="com.tevioapp.vendor.data.ThreadDetail" />
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.support.audio.IncomingAudioCallActivityVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_placeholder_vertical"
+            app:image_place_holder="@{@drawable/ic_placeholder_vertical}"
+            app:image_round="@{true}"
+            app:image_url="@{threadDetail.image}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundedImage" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextView.Medium"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            android:text="@{threadDetail.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"
+            tools:text="User Name" />
+
+        <TextView
+            android:id="@+id/tv_role"
+            style="@style/TextView.Medium"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Courier" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/TextView.Medium"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_role"
+            tools:text="Incoming Call.." />
+
+
+        <ImageView
+            android:id="@+id/iv_decline"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginBottom="@dimen/_80sdp"
+            android:background="@drawable/bg_circle_solid"
+            android:backgroundTint="@color/red"
+            android:importantForAccessibility="no"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:padding="@dimen/_15sdp"
+            android:rotation="135"
+            android:src="@drawable/ic_phone_call_solid"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:tint="@color/white_fix" />
+
+        <TextView
+            style="@style/TextView.Medium"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:text="@string/decline"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@id/iv_decline"
+            app:layout_constraintStart_toStartOf="@id/iv_decline"
+            app:layout_constraintTop_toBottomOf="@id/iv_decline" />
+
+
+        <ImageView
+            android:id="@+id/iv_accept"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/bg_circle_solid"
+            android:backgroundTint="@color/dark_green"
+            android:importantForAccessibility="no"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/ic_phone_call_solid"
+            app:layout_constraintBottom_toBottomOf="@id/iv_decline"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="@id/iv_decline"
+            app:tint="@color/white_fix" />
+
+        <TextView
+            style="@style/TextView.Medium"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:text="@string/accept"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@id/iv_accept"
+            app:layout_constraintStart_toStartOf="@id/iv_accept"
+            app:layout_constraintTop_toBottomOf="@id/iv_accept" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

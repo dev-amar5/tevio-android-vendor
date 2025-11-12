@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <variable
+            name="holder"
+            type="com.tevioapp.vendor.presentation.common.base.adapter.BaseViewHolder" />
+
+        <variable
+            name="bean"
+            type="com.google.android.libraries.places.api.model.AutocompletePrediction" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:base_adapter_callback="@{holder}">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextView.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_10sdp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:drawableStartCompat="@drawable/ic_location_arrow"
+            app:drawableTint="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tv_km"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:primary_text="@{bean}"
+            tools:text="2023 DC Beer Fest" />
+
+        <TextView
+            android:id="@+id/tv_km"
+            style="@style/TextView.Regular"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:distance="@{bean}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_name"
+            tools:text="20 km" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/TextView.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_km"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:secondary_text="@{bean}"
+            tools:text="ABC Conference Center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

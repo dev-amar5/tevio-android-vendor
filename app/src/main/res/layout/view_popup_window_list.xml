@@ -1,0 +1,26 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv_main"
+        app:cardBackgroundColor="@color/card_bg_dual"
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:cardElevation="@dimen/_1sdp"
+        app:strokeColor="@color/orange"
+        app:strokeWidth="@dimen/_1sdp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/rv_horizontal_padding"
+            android:paddingVertical="@dimen/horizontal_margin" />
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+</layout>

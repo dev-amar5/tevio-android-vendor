@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.tevioapp.vendor.data.DeliveryTypeOption" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/radio"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_radio_active"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextView.LightMedium"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:text="@{bean.title}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@id/radio"
+            app:layout_constraintEnd_toStartOf="@+id/iv_type"
+            app:layout_constraintStart_toEndOf="@+id/radio"
+            app:layout_constraintTop_toTopOf="@id/radio"
+            tools:text="Package Delivery" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@{bean.description}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="All orders in nearby areas" />
+
+        <TextView
+            android:id="@+id/tv_bonus"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@{bean.getBonusString()}"
+            android:textColor="@color/dark_green"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc"
+            tools:text="Joining Bonus of up to" />
+
+        <TextView
+            android:id="@+id/tv_learn_more"
+            style="@style/TextView.Regular"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@{bean.urlTitle}"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bonus"
+            app:underline="@{true}"
+            app:underline_web_link="@{bean.url}"
+            tools:text="@string/learn_more" />
+
+        <ImageView
+            android:id="@+id/iv_type"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_0dp"
+            android:importantForAccessibility="no"
+            app:image_place_holder="@{@drawable/ic_placeholder_vertical}"
+            app:image_url="@{bean.imageUrl}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_bonus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/line_dual"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

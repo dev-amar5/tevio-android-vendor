@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selected"
+            type="Boolean" />
+
+        <variable
+            name="bean"
+            type="com.tevioapp.vendor.data.DressKit" />
+
+        <variable
+            name="holder"
+            type="com.tevioapp.vendor.presentation.common.base.adapter.BaseViewHolder" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        app:base_adapter_callback="@{holder}">
+
+        <TextView
+            style="@style/TextView.Bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_circle_only_stroke"
+            android:gravity="center"
+            android:text="@{bean.size}"
+            android:textColor="@color/black_fix"
+            android:textSize="@dimen/_12ssp"
+            tools:text="Xs" />
+
+        <TextView
+            style="@style/TextView.Bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_circle_solid"
+            android:backgroundTint="@color/dark_green"
+            android:gravity="center"
+            android:text="@{bean.size}"
+            android:textColor="@color/white_fix"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:view_isVisible="@{selected}"
+            tools:text="Xs" />
+
+    </FrameLayout>
+</layout>

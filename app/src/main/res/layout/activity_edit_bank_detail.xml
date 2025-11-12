@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vm="@{vm}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/vertical_margin"
+            android:fillViewport="true"
+            android:paddingHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintBottom_toTopOf="@id/btn_submit"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_label_payout_method"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/payout_method"
+                    app:drawableStartCompat="@drawable/ic_wallet" />
+
+                <TextView
+                    android:id="@+id/tv_payout_method"
+                    style="@style/EditText.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:hint="@string/select"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_payout_method"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+                <LinearLayout
+                    android:id="@+id/v_mobile_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                        android:text="@string/mobile_money_network"
+                        app:drawableStartCompat="@drawable/ic_share" />
+
+                    <TextView
+                        android:id="@+id/tv_mobile_network"
+                        style="@style/EditText.DropDown"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/select"
+                        android:onClick="@{v->vm.onClick(v)}"
+                        tools:ignore="Autofill,LabelFor,TextFields" />
+
+                    <TextView
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                        android:text="@string/mobile_money_name"
+                        app:drawableStartCompat="@drawable/ic_note" />
+
+                    <EditText
+                        android:id="@+id/et_mobile_name"
+                        style="@style/EditText.Solid"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/mobile_money_name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        tools:ignore="Autofill,LabelFor,TextFields" />
+
+                    <TextView
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                        android:text="@string/mobile_money_number"
+                        app:drawableStartCompat="@drawable/ic_card" />
+
+                    <EditText
+                        android:id="@+id/et_mobile_number"
+                        style="@style/EditText.Solid"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/mobile_money_name"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        tools:ignore="Autofill,LabelFor,TextFields" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/v_bank_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                        android:text="@string/bank_name"
+                        app:drawableStartCompat="@drawable/ic_share" />
+
+                    <EditText
+                        android:id="@+id/et_bank_name"
+                        style="@style/EditText.Solid"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/bank_name"
+                        android:inputType="textCapWords"
+                        tools:ignore="Autofill,LabelFor,TextFields" />
+
+                    <TextView
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                        android:text="@string/account_number"
+                        app:drawableStartCompat="@drawable/ic_card" />
+
+                    <EditText
+                        android:id="@+id/et_account_number"
+                        style="@style/EditText.Solid"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/account_number"
+                        android:inputType="number"
+                        android:maxLength="15"
+                        tools:ignore="Autofill,LabelFor,TextFields" />
+
+                    <TextView
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                        android:text="@string/code"
+                        app:drawableStartCompat="@drawable/ic_note" />
+
+                    <EditText
+                        android:id="@+id/et_code"
+                        style="@style/EditText.Solid"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/code"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        tools:ignore="Autofill,LabelFor,TextFields" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btn_submit"
+            style="@style/ButtonSolid"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginVertical="@dimen/button_bottom_margin"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="@string/verify_bank_details"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            layout="@layout/view_shimmer_loader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

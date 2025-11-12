@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.tevioapp.vendor.presentation.common.base.sheet.BaseSheet.Listener" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:background="@drawable/bg_top_round_white"
+            android:backgroundTint="@color/card_bg_dual"
+            android:padding="@dimen/_15sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_cross"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:background="@drawable/bg_circle_solid"
+                android:backgroundTint="@color/icon_bg_color"
+                android:onClick="@{v->callback.onClick(v)}"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_cross"
+                android:tint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_camera_inst"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_cross"
+                app:shapeAppearance="@style/AllRoundedCorners15" />
+
+            <TextView
+                android:id="@+id/v_label"
+                style="@style/TextView.Medium"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="How to take photo of this order?"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_banner" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_main"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:outlineSpotShadowColor="@color/card_shadow_color"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/card_corner_radius_medium"
+                app:cardElevation="@dimen/card_elevation_medium"
+                app:contentPadding="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@id/v_label"
+                app:layout_constraintStart_toStartOf="@id/v_label"
+                app:layout_constraintTop_toBottomOf="@id/v_label">
+
+                <TextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="@dimen/_5sdp"
+                    android:text="• Keep the order on a clean surface.\n•
+Turn on flash if lighting is poor.\n•
+Entire order with cover should be visible."
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/btn_got_it"
+                style="@style/ButtonSolid"
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/button_bottom_margin"
+                android:onClick="@{v->callback.onClick(v)}"
+                android:text="@string/got_it"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/v_label"
+                app:layout_constraintStart_toStartOf="@id/v_label"
+                app:layout_constraintTop_toBottomOf="@id/cv_main" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

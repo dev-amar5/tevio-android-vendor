@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMain"
+        style="@style/ButtonSolid.Icon"
+        android:layout_width="match_parent"
+        android:clickable="false"
+        android:text="Title"
+        app:layout_constraintEnd_toEndOf="@id/line"
+        app:layout_constraintStart_toStartOf="@id/line"
+        app:layout_constraintTop_toBottomOf="@id/btn_call_carrier" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieLoader"
+        android:layout_width="@dimen/button_height"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="center_horizontal"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:visibility="gone"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="anim_dots.json"
+        app:lottie_loop="true" />
+</merge>

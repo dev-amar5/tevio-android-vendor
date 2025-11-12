@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.tevioapp.vendor.utility.util.DeviceUtils" />
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.errors.ErrorsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextView.Bold"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:gravity="center"
+            android:text="@string/no_internet"
+            android:textSize="@dimen/_20ssp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_100sdp"
+            android:adjustViewBounds="true"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_fileName="anim_internet.json" />
+
+        <TextView
+            style="@style/TextView.EditTextHeader"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:gravity="center"
+            android:text="@string/please_check_your_internet_connection" />
+
+
+        <Button
+            android:id="@+id/btn_retry"
+            style="@style/ButtonSolid"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="@string/retry" />
+
+        <TextView
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@{DeviceUtils.INSTANCE.appVersionName}"
+            android:textColor="@color/gray"
+            tools:text="App Version"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+</layout>

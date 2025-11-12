@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profile"
+            type="com.tevioapp.vendor.data.common.Profile" />
+        <variable
+            name="profileImage"
+            type="String" />
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.main.MainActivityVM" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_screen"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fc_main"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/yellow"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toTopOf="@id/fl_bottom"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navGraph="@navigation/nav_graph" />
+
+            <FrameLayout
+                android:id="@+id/fl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bv_main"
+                    style="@style/BottomNavigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:menu="@menu/bottom_navigation_items" />
+
+                <!-- Background Line (Above Bottom Navigation) -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    app:layout_constraintTop_toTopOf="@id/bv_main">
+
+                    <View
+                        android:id="@+id/line_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2sdp"
+                        android:background="@color/nav_line_bg_color" />
+
+                    <View
+                        android:id="@+id/line_green"
+                        android:layout_width="50dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:background="@color/dark_green" />
+                </FrameLayout>
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/top_header_bg_height"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:id="@+id/fl_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_menu"
+                    style="@style/BgRoundSquare"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    android:src="@drawable/ic_menu_lines"
+                    app:tint="@color/black" />
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.tevioapp.vendor.presentation.common.compoundviews.RoundViewGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/_30sdp"
+            app:bottomRightRadius="@dimen/_25sdp"
+            app:topRightRadius="@dimen/_25sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/card_bg_dual"
+                android:paddingHorizontal="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/iv_close_menu"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/top_header_bg_height"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    android:src="@drawable/ic_close_circle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    app:cardBackgroundColor="@color/green_alpha_20"
+                    app:cardCornerRadius="@dimen/card_corner_radius_large"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/iv_close_menu">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.tevioapp.vendor.presentation.common.compoundviews.CircularImageView
+                            android:id="@+id/iv_profile"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_placeholder_vertical"
+                            app:image_place_holder="@{@drawable/ic_placeholder_vertical}"
+                            app:image_round="@{true}"
+                            app:image_url="@{profile.profilePic}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            style="@style/TextView.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:lines="1"
+                            android:onClick="@{v->vm.onClick(v)}"
+                            android:text="@{profile.fullName}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp"
+                            app:drawableEndCompat="@drawable/ic_arrow_circle_right"
+                            app:drawableTint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_profile"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Arvind" />
+
+                        <TextView
+                            style="@style/TextView.Bold"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/bg_round_solid_3x"
+                            android:backgroundTint="@color/parrot_green"
+                            android:drawablePadding="@dimen/_2sdp"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="4.5"
+                            android:textColor="@color/white_fix"
+                            android:textSize="@dimen/_12ssp"
+                            app:drawableStartCompat="@drawable/ic_star"
+                            app:drawableTint="@color/white_fix"
+                            app:layout_constraintStart_toStartOf="@id/tv_name"
+                            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/cv_profile" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.tevioapp.vendor.presentation.common.compoundviews.RoundViewGroup>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

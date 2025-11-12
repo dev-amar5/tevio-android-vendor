@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.tevioapp.vendor.presentation.common.base.dialog.BaseCustomDialog.Listener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/card_bg_dual"
+        app:cardCornerRadius="@dimen/card_corner_radius_large"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp">
+            <ImageView
+                android:id="@+id/iv_cross"
+                style="@style/IconFilterCross"
+                android:importantForAccessibility="no"
+                android:onClick="@{v->callback.onClick(v)}"
+               app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:background="@drawable/bg_round_solid_3x"
+                android:backgroundTint="@color/orange_alpha_12"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@drawable/ic_info_circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_cross"
+                app:tint="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_Header"
+                style="@style/TextView.Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/tv_sub_header"
+                style="@style/TextView.LightMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_Header"
+                app:layout_constraintStart_toStartOf="@+id/tv_Header"
+                app:layout_constraintTop_toBottomOf="@id/tv_Header"
+                tools:text="Message text" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:background="@color/line_dual"
+                app:layout_constraintEnd_toEndOf="@+id/tv_Header"
+                app:layout_constraintStart_toStartOf="@+id/tv_Header"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sub_header" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                style="@style/ButtonSolid"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:onClick="@{v->callback.onClick(v)}"
+                app:layout_constraintTop_toBottomOf="@+id/view1"
+                tools:text="@string/okay" />
+
+            <TextView
+                android:id="@+id/tv_close"
+                style="@style/TextView.LightMedium"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:onClick="@{v->callback.onClick(v)}"
+                android:padding="@dimen/_5sdp"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tv_Header"
+                app:layout_constraintStart_toStartOf="@+id/tv_Header"
+                app:layout_constraintTop_toBottomOf="@id/btn_ok"
+                tools:text="Cancel" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

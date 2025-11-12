@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/frg_dashboard">
+    <fragment
+        android:id="@+id/frg_dashboard"
+        android:name="com.tevioapp.vendor.presentation.views.main.dashboard.DashBoardFragment"
+        android:label="@string/dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/frg_order_activity"
+        android:name="com.tevioapp.vendor.presentation.views.main.order.OrderActivityFragment"
+        android:label="@string/order_activity"
+        tools:layout="@layout/fragment_order_activity" />
+    <fragment
+        android:id="@+id/frg_wallet"
+        android:name="com.tevioapp.vendor.presentation.views.main.wallet.WalletFragment"
+        android:label="@string/wallet"
+        tools:layout="@layout/fragment_wallet" />
+    <fragment
+        android:id="@+id/frg_notification"
+        android:name="com.tevioapp.vendor.presentation.views.main.notification.NotificationFragment"
+        android:label="@string/notification"
+        tools:layout="@layout/fragment_notification" />
+</navigation>

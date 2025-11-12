@@ -1,0 +1,8 @@
+package com.tevioapp.vendor.utility.blurview
+
+import android.graphics.Bitmap
+import android.graphics.Canvas
+
+// Serves purely as a marker of a Canvas used in BlurView
+// to skip drawing itself and other BlurViews on the View hierarchy snapshot
+class BlurViewCanvas(bitmap: Bitmap) : Canvas(bitmap)

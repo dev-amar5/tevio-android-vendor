@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.tevioapp.vendor.utility.util.DeviceUtils" />
+
+        <variable
+            name="profileImage"
+            type="String" />
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vm="@{vm}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent "
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:padding="@dimen/horizontal_margin">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:outlineSpotShadowColor="@color/card_shadow_color"
+                    app:cardBackgroundColor="@color/card_bg_dual"
+                    app:cardCornerRadius="@dimen/card_corner_radius_medium"
+                    app:cardElevation="@dimen/card_elevation_medium">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.tevioapp.vendor.presentation.common.compoundviews.CircularImageView
+                            android:id="@+id/iv_profile"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_placeholder_vertical"
+                            app:image_place_holder="@{@drawable/ic_placeholder_vertical}"
+                            app:image_round="@{true}"
+                            app:image_url="@{profileImage}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/iv_camera"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@drawable/bg_circle_solid"
+                            android:elevation="@dimen/_5sdp"
+                            android:importantForAccessibility="no"
+                            android:onClick="@{v->vm.onClick(v)}"
+                            android:padding="@dimen/_7sdp"
+                            android:src="@drawable/ic_camera"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+                            app:layout_constraintEnd_toEndOf="@id/iv_profile"
+                            app:layout_constraintHorizontal_bias="1.1"
+                            app:layout_constraintStart_toStartOf="@id/iv_profile"
+                            app:layout_constraintTop_toTopOf="@id/iv_profile"
+                            app:layout_constraintVertical_bias="1.1"
+                            app:tint="@color/orange" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            style="@style/TextView.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:lines="1"
+                            android:textColor="@color/black_fix"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_profile"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Arvind" />
+
+                        <TextView
+                            style="@style/TextView.Bold"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/bg_round_solid_3x"
+                            android:backgroundTint="@color/parrot_green"
+                            android:drawablePadding="@dimen/_2sdp"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="4.5"
+                            android:textColor="@color/white_fix"
+                            android:textSize="@dimen/_12ssp"
+                            app:drawableStartCompat="@drawable/ic_star"
+                            app:drawableTint="@color/white_fix"
+                            app:layout_constraintStart_toStartOf="@id/tv_name"
+                            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                        <Button
+                            android:id="@+id/btn_rating"
+                            style="@style/ButtonSolid"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:onClick="@{v->vm.onClick(v)}"
+                            android:text="@string/view_ratings"
+                            app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <include
+                    android:id="@+id/v_account_info"
+                    layout="@layout/section_profile_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <include
+                    android:id="@+id/v_personal_info"
+                    layout="@layout/section_profile_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <include
+                    android:id="@+id/v_vehicle_info"
+                    layout="@layout/section_profile_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <include
+                    android:id="@+id/v_payout_info"
+                    layout="@layout/section_profile_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <TextView
+                    style="@style/TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="@dimen/_20sdp"
+                    android:text="@{DeviceUtils.INSTANCE.appVersionName}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12ssp"
+                    tools:text="App Version" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/view_shimmer_loader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

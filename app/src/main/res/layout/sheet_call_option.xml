@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="image"
+            type="String" />
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.support.message.ChatActivityVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_top_round_white"
+        android:backgroundTint="@color/card_bg_dual">
+
+        <ImageView
+            android:id="@+id/iv_cross"
+            style="@style/IconFilterCross"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:onClick="@{v->vm.onClick(v)}"
+            app:layout_constraintEnd_toEndOf="@id/v_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/v_anchor_top"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@drawable/bg_round_solid_1x"
+            android:backgroundTint="@color/line"
+            app:layout_constraintBottom_toBottomOf="@id/iv_cross"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_cross" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/v_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_cross">
+
+            <com.tevioapp.vendor.presentation.common.compoundviews.CircularImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_placeholder_vertical"
+                app:image_place_holder="@{@drawable/ic_placeholder_vertical}"
+                app:image_round="@{true}"
+                app:image_url="@{image}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="tv_name,tv_desc"
+                app:flow_verticalGap="@dimen/_3sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_profile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TextView.Medium"
+                android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                style="@style/TextView.Regular"
+                android:layout_width="0dp"
+                android:textColor="@color/gray_white"
+                android:textSize="@dimen/_12ssp"
+                tools:text="Desc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/line_dual"
+            app:layout_constraintEnd_toEndOf="@id/v_profile"
+            app:layout_constraintStart_toStartOf="@id/v_profile"
+            app:layout_constraintTop_toBottomOf="@id/v_profile" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_call_carrier"
+            style="@style/ButtonStroke"
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/button_bottom_margin"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="+233 54 123 4567"
+            app:layout_constraintEnd_toEndOf="@id/line"
+            app:layout_constraintStart_toStartOf="@id/line"
+            app:layout_constraintTop_toBottomOf="@id/line" />
+
+        <com.tevioapp.vendor.presentation.common.compoundviews.LottieButton
+            android:id="@+id/btn_call_in_app"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:onClick="@{v->vm.onClick(v)}"
+            app:layout_constraintEnd_toEndOf="@id/line"
+            app:layout_constraintStart_toStartOf="@id/line"
+            app:layout_constraintTop_toBottomOf="@id/btn_call_carrier"
+            app:lb_button_style="@style/ButtonSolid.Icon"
+            app:lb_button_text="@string/call_in_app"
+            app:lb_icon_res="@drawable/ic_phone_call_solid" />
+
+        <TextView
+            style="@style/TextView.Regular"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:text="Carrier rates may apply."
+            android:textColor="@color/gray_white"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_call_in_app" />
+
+        <include
+            layout="@layout/view_shimmer_loader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_cross" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.tevioapp.vendor.data.DeliveryKitDetail.Item" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingVertical="@dimen/_10sdp"
+        android:background="@color/card_bg_dual"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            style="@style/TextView.LightMedium"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:text="@{bean.itemName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/profile" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            style="@style/TextView.LightMedium"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/bg_round_corner_solid"
+            android:backgroundTint="@color/light_blue"
+            android:paddingVertical="@dimen/_4sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text='@{"Qty: "+bean.quantity}'
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_name"
+            tools:text="Qty: 1" />
+
+        <TextView
+            android:id="@+id/tv_free"
+            style="@style/TextView.LightMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/bg_round_corner_solid"
+            android:backgroundTint="@color/green_alpha_20"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="@string/free"
+            android:textColor="@color/parrot_green"
+            app:view_isVisible="@{bean.isFree()}"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_quantity"
+            app:layout_constraintStart_toEndOf="@id/tv_quantity"
+            app:layout_constraintTop_toTopOf="@id/tv_quantity"
+            tools:text="@string/free" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/TextView.LightMedium"
+            android:layout_width="@dimen/_0dp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            app:currency="@{bean.price}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_quantity"
+            app:layout_constraintStart_toEndOf="@id/tv_quantity"
+            app:layout_constraintTop_toTopOf="@id/tv_quantity"
+            app:view_isGone="@{bean.isFree()}"
+            tools:text="₵ 500 " />
+
+        <TextView
+            android:id="@+id/tv_change_size"
+            style="@style/TextView.Regular"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:text="@string/change_size"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_quantity"
+            app:underline="@{true}"
+            app:view_isVisible="@{bean.isTShirt()}"
+            tools:text="@string/change_size" />
+
+        <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_0dp"
+            app:image_url="@{bean.imageUrl}"
+            app:image_disable_crop="@{true}"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_quantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

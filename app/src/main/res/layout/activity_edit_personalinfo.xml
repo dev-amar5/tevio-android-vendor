@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vm="@{vm}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fillViewport="true"
+            android:paddingHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintBottom_toTopOf="@id/btn_submit"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_firstname"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:text="@string/first_name"
+                    app:drawableStartCompat="@drawable/ic_profile"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_lastname"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_lastname"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="@string/last_name"
+                    app:drawableStartCompat="@drawable/ic_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_firstname"
+                    app:layout_constraintTop_toTopOf="@id/tv_firstname" />
+
+                <EditText
+                    android:id="@+id/et_firstname"
+                    style="@style/EditText.Solid"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:hint="@string/first_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="15"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="@id/tv_firstname"
+                    app:layout_constraintStart_toStartOf="@id/tv_firstname"
+                    app:layout_constraintTop_toBottomOf="@id/tv_firstname"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <EditText
+                    android:id="@+id/et_lastname"
+                    style="@style/EditText.Solid"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:hint="@string/last_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="15"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="@id/tv_lastname"
+                    app:layout_constraintStart_toStartOf="@id/tv_lastname"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lastname"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/email"
+                    app:drawableStartCompat="@drawable/ic_email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_firstname" />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/EditText.Solid"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/select_your_gender"
+                    app:drawableStartCompat="@drawable/ic_gender"
+                    app:layout_constraintStart_toStartOf="@id/et_email"
+                    app:layout_constraintTop_toBottomOf="@id/et_email" />
+
+                <RadioGroup
+                    android:id="@+id/rg_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@id/et_email"
+                    app:layout_constraintStart_toStartOf="@id/et_email"
+                    app:layout_constraintTop_toBottomOf="@id/tv_gender">
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:buttonTint="@drawable/radio_button_color"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="@string/male"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_100sdp"
+                        android:buttonTint="@drawable/radio_button_color"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="@string/female"
+                        android:textColor="@color/black" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_birth"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/date_of_birth"
+                    app:drawableStartCompat="@drawable/ic_cake"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rg_gender" />
+
+                <EditText
+                    android:id="@+id/et_date_of_birth"
+                    style="@style/EditText.DropDown"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:drawableEnd="@drawable/ic_calender"
+                    android:hint="@string/hint_dash"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_birth"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/address"
+                    app:drawableStartCompat="@drawable/ic_location"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_date_of_birth" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    style="@style/EditText.DropDown"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:drawableEnd="@drawable/ic_arrow_right"
+                    android:hint="@string/select_address"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_address"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+                <TextView
+                    android:id="@+id/tv_emergency_contacts"
+                    style="@style/TextView.Bold"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/emergency_contacts"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_address"
+                    tools:text="@string/emergency_contacts" />
+
+                <FrameLayout
+                    android:id="@+id/emergency_contacts_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_emergency_contacts" />
+
+                <FrameLayout
+                    android:id="@+id/emergency_contacts_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emergency_contacts_1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btn_submit"
+            style="@style/ButtonSolid"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginVertical="@dimen/button_bottom_margin"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            layout="@layout/view_shimmer_loader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

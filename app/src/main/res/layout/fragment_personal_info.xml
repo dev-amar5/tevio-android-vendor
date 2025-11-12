@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.auth.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/vertical_margin"
+            android:fillViewport="true"
+            android:paddingHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintBottom_toTopOf="@id/btn_update_profile"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_personal_info"
+                    style="@style/TextView.Bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/personal_info"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/personal_info" />
+
+                <TextView
+                    android:id="@+id/tv_let_us_know"
+                    style="@style/TextView.LightMedium"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/let_us_know_how_to_properly_address_you"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_personal_info"
+                    tools:text="@string/let_us_know_how_to_properly_address_you" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing">
+
+                    <TextView
+                        android:id="@+id/tv_firstname"
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/first_name"
+                        app:drawableStartCompat="@drawable/ic_profile"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_lastname"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_lastname"
+                        style="@style/TextView.EditTextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/last_name"
+                        app:drawableStartCompat="@drawable/ic_profile"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_firstname"
+                        app:layout_constraintTop_toTopOf="@id/tv_firstname" />
+
+                    <EditText
+                        android:id="@+id/et_firstname"
+                        style="@style/EditText.Solid"
+                        android:layout_width="0dp"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/first_name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="@id/tv_firstname"
+                        app:layout_constraintStart_toStartOf="@id/tv_firstname"
+                        app:layout_constraintTop_toBottomOf="@id/tv_firstname"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <EditText
+                        android:id="@+id/et_lastname"
+                        style="@style/EditText.Solid"
+                        android:layout_width="0dp"
+                        android:layout_marginTop="@dimen/edit_to_header_spacing"
+                        android:hint="@string/last_name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="@id/tv_lastname"
+                        app:layout_constraintStart_toStartOf="@id/tv_lastname"
+                        app:layout_constraintTop_toBottomOf="@id/tv_lastname"
+                        tools:ignore="Autofill,LabelFor" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/email"
+                    app:drawableStartCompat="@drawable/ic_email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_firstname" />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/EditText.Solid"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:hint="@string/hint_email"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    style="@style/TextView.EditTextHeader"
+                    android:layout_marginTop="@dimen/edit_to_edit_spacing"
+                    android:text="@string/select_your_gender"
+                    app:drawableStartCompat="@drawable/ic_gender" />
+
+                <RadioGroup
+                    android:id="@+id/rg_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_to_header_spacing"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:buttonTint="@drawable/radio_button_color"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="@string/male"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_100sdp"
+                        android:buttonTint="@drawable/radio_button_color"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="@string/female"
+                        android:textColor="@color/black" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tv_emergency_contacts"
+                    style="@style/TextView.Bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/emergency_contacts"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:text="@string/emergency_contacts" />
+
+                <FrameLayout
+                    android:id="@+id/emergency_contacts_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp" />
+
+                <FrameLayout
+                    android:id="@+id/emergency_contacts_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btn_update_profile"
+            style="@style/ButtonSolid"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginVertical="@dimen/button_bottom_margin"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:text="@string/label_continue"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            layout="@layout/view_shimmer_loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

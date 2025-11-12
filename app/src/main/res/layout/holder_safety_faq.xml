@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.tevioapp.vendor.utility.AppConstants" />
+
+        <variable
+            name="holder"
+            type="com.tevioapp.vendor.presentation.common.base.adapter.BaseViewHolder" />
+
+        <variable
+            name="bean"
+            type="com.tevioapp.vendor.data.common.TitleDescription" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="@color/card_shadow_color"
+        app:base_adapter_callback="@{holder}"
+        app:cardBackgroundColor="@color/card_bg_dual"
+        app:cardCornerRadius="@dimen/card_corner_radius_medium"
+        app:cardElevation="@dimen/card_elevation_medium"
+        app:rippleColor="@android:color/transparent"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_12sdp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TextView.Medium"
+                android:layout_width="match_parent"
+                android:text="@{bean.title}"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                tools:text="Feeling Unsafe" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                style="@style/TextView.Regular"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{bean.description}"
+                android:textColor="@color/gray_white"
+                android:textSize="@dimen/_11ssp"
+                tools:text="tap the" />
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF6700</color>
+    <color name="colorPrimaryDark">#FF6700</color>
+    <color name="black">#FF000000</color>
+    <color name="black_fix_10">#19000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_fix">#FFFFFFFF</color>
+    <color name="black_fix">#141414</color>
+    <color name="white_alpha_15">#26FFFFFF</color>
+    <color name="white_black">#0E0E0E</color>
+    <color name="gray_white">#5C6175</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="bg_screen">#FFFFFF</color>
+    <color name="bg_sheet">#FCFCFF</color>
+    <color name="light_orange">#FCCAA8</color>
+    <color name="orange">#FF6700</color>
+    <color name="orange_alpha_12">#1FFF6700</color>
+    <color name="red">#DC3027</color>
+    <color name="red_alpha_20">#33EB5757</color>
+    <color name="line">#ECEEEF</color>
+    <color name="shimmer_back">#FFF</color>
+    <color name="shimmer_front">#19090909</color>
+
+    <color name="edit_hint_color">#66637381</color>
+    <color name="icon_bg_color">#FAFAFA</color>
+    <color name="card_bg_dual">#FFFFFF</color>
+    <color name="card_dual_stroke">#FFFFFF</color>
+    <color name="card_shadow_color">#4C434343</color>
+
+
+    <color name="line_dual">#DDE2E7</color>
+    <color name="dark_green">#00613B</color>
+    <color name="green_alpha_20">#33017A4A</color>
+    <color name="light_blue">#F3F9FA</color>
+    <color name="parrot_green">#00BF31</color>
+    <color name="edit_bg_color_solid2">#F7F8FB</color>
+    <color name="edit_bg_color_solid_stroke">#00FFFFFF</color>
+    <color name="edit_bg_color_search">#F9F9FA</color>
+    <color name="edit_bg_color_solid">#F3F6FB</color>
+
+    <color name="search_stroke">#ECECEE</color>
+    <color name="dialog_bg_tint">#80000000</color>
+    <color name="gray">#D3D4D6</color>
+    <color name="transparent_60">#CCFFFFFF</color>
+
+    <color name="nav_line_bg_color">#DDE2E7</color>
+    <color name="yellow">#F3BA44</color>
+
+    <color name="map_circle_inner">#4FFF6700</color>
+    <color name="bg_count_down">#F8E8DD</color>
+    <color name="poly_line_shadow">#2C5D5D5D</color>
+
+    <color name="tab_color_unselected">#5C6175</color>
+    <color name="chat_left_card">#F7F8FB</color>
+    <color name="chat_right_card">#036D58</color>
+
+
+    <color name="color_bg_campaign">#382CAF94</color>
+    <color name="color_campaign_bonus_text">#00613B</color>
+
+</resources>

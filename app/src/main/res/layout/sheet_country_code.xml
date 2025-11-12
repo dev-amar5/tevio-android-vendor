@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.country.CountryCodeSheetVM" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_top_round_white"
+        android:backgroundTint="@color/card_bg_dual">
+
+        <ImageView
+            android:id="@+id/iv_cross"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/bg_circle_solid"
+            android:backgroundTint="@color/icon_bg_color"
+            android:src="@drawable/ic_cross"
+            app:layout_constraintEnd_toEndOf="@id/line1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black"
+            tools:ignore="ContentDescription" />
+        <include
+            android:id="@+id/line1"
+            layout="@layout/view_left_title_line12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            app:label="@{@string/country_prefix}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_cross" />
+
+
+        <EditText
+            android:id="@+id/et_search"
+            style="@style/EditText.Search"
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:drawableEnd="@drawable/ic_search"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="@string/search"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@id/line1"
+            app:layout_constraintStart_toStartOf="@id/line1"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            tools:ignore="Autofill,LabelFor" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_one"
+            android:layout_width="0dp"
+            android:layoutAnimation="@anim/layout_animation"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/et_search"
+            app:layout_constraintStart_toStartOf="@id/et_search"
+            app:layout_constraintTop_toBottomOf="@id/et_search" />
+
+        <include
+            android:id="@+id/shimmer"
+            layout="@layout/view_shimmer_loader" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

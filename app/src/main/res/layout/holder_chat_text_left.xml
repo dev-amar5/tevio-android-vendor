@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.tevioapp.vendor.utility.AppConstants" />
+
+        <variable
+            name="holder"
+            type="com.tevioapp.vendor.presentation.common.base.adapter.BaseViewHolder" />
+
+        <variable
+            name="bean"
+            type="com.tevioapp.vendor.data.ChatMessage" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/chat_margin_top"
+        android:layout_marginBottom="@dimen/chat_margin_bottom"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/chat_margin_start"
+        android:paddingEnd="@dimen/chat_margin_end">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:base_adapter_callback="@{holder}"
+            app:cardBackgroundColor="@color/chat_left_card"
+            app:cardCornerRadius="@dimen/chat_corner_radius"
+            app:cardElevation="@dimen/chat_card_elevation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/tv_desc"
+                style="@style/TextView.Regular"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/_30sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@{bean.message}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:text="T" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/TextView.Regular"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:date_format="@{AppConstants.FORMAT_DATE_TIME_SHORT}"
+            app:date_timestamp="@{bean.createdAt}"
+            app:date_today_only_time="@{true}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_one"
+            tools:text="12:00 AM" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

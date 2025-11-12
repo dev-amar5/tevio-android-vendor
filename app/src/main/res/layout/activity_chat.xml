@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.support.message.ChatActivityVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vm="@{vm}" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_header"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:adjustViewBounds="true"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:layout_constraintBottom_toBottomOf="@id/header"
+            app:layout_constraintEnd_toEndOf="@id/header"
+            app:layout_constraintStart_toStartOf="@id/header"
+            app:layout_constraintTop_toTopOf="@id/header"
+            app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/black"
+            app:lottie_fileName="anim_dots.json"
+            app:lottie_loop="true" />
+
+        <ImageView
+            android:id="@+id/iv_call"
+            style="@style/BgRoundSquare"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:importantForAccessibility="no"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:src="@drawable/ic_phone_call_stroke"
+            app:layout_constraintBottom_toBottomOf="@id/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/header"
+            app:tint="@color/black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_one"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_5sdp"
+            android:background="@drawable/top_shadow_view"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom" />
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/v_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/v_edit_box"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/edit_back_view_solid"
+                app:layout_constraintEnd_toStartOf="@id/iv_send"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <EditText
+                    android:id="@+id/et_message"
+                    style="@style/EditText"
+                    android:layout_width="0dp"
+                    android:background="@null"
+                    android:hint="@string/type_your_message"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="500"
+                    app:layout_constraintEnd_toStartOf="@id/flow_media"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow_media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:constraint_referenced_ids="iv_attachment,iv_camera"
+                    app:flow_horizontalGap="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_attachment"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    android:src="@drawable/ic_paper_clip"
+                    app:tint="@color/black" />
+
+                <ImageView
+                    android:id="@+id/iv_camera"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{v->vm.onClick(v)}"
+                    android:src="@drawable/ic_camera"
+                    app:tint="@color/black" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/iv_send"
+                style="@style/BgRoundSquare"
+                android:backgroundTint="@color/orange"
+                android:importantForAccessibility="no"
+                android:onClick="@{v->vm.onClick(v)}"
+                android:src="@drawable/ic_navigation"
+                app:layout_constraintBottom_toBottomOf="@id/v_edit_box"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/v_edit_box"
+                app:tint="@color/white_fix" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/v_typing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/chat_margin_start"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/chat_left_card"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toTopOf="@id/v_bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeWidth="0dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:adjustViewBounds="true"
+                android:scaleX="2"
+                android:scaleY="2"
+                app:lottie_autoPlay="true"
+                app:lottie_colorFilter="@color/dark_green"
+                app:lottie_fileName="anim_dots.json"
+                app:lottie_loop="true" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <include
+            layout="@layout/view_shimmer_loader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tevioapp.vendor.presentation.views.auth.AuthViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_logo"
+            app:vm="@{vm}" />
+
+        <include
+            android:id="@+id/line1"
+            layout="@layout/view_left_title_line_bold14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            app:label="@{@string/enter_the_4_digit_code_sent_to_you}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:flow_horizontalStyle="spread_inside"
+            app:constraint_referenced_ids="et_1,et_2,et_3,et_4"
+            app:layout_constraintEnd_toEndOf="@id/line1"
+            app:layout_constraintStart_toStartOf="@id/line1"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <EditText
+            android:id="@+id/et_1"
+            style="@style/EditText.Solid"
+            android:layout_width="@dimen/_40sdp"
+            android:autofillHints="no"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="1"
+            tools:ignore="LabelFor,TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/et_2"
+            style="@style/EditText.Solid"
+            android:layout_width="@dimen/_40sdp"
+            android:autofillHints="no"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="1"
+            tools:ignore="LabelFor,TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/et_3"
+            style="@style/EditText.Solid"
+            android:layout_width="@dimen/_40sdp"
+            android:autofillHints="no"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="1"
+            tools:ignore="LabelFor,TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/et_4"
+            style="@style/EditText.Solid"
+            android:layout_width="@dimen/_40sdp"
+            android:autofillHints="no"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="1"
+            tools:ignore="LabelFor,TextSizeCheck" />
+
+        <Button
+            android:id="@+id/btn_continue"
+            style="@style/ButtonSolid"
+            android:layout_width="0dp"
+            android:layout_marginBottom="@dimen/button_bottom_margin"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:text="@string/label_continue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/flow"
+            app:layout_constraintStart_toStartOf="@id/flow" />
+
+        <TextView
+            android:id="@+id/tv_resend_label"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_12ssp"
+            tools:text="Resend OTP"
+            app:layout_constraintEnd_toEndOf="@id/flow"
+            app:layout_constraintStart_toStartOf="@id/flow"
+            app:layout_constraintTop_toBottomOf="@id/flow" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

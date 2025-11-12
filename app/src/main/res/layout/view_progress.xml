@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:background="#3DFFFFFF"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_percent"
+            style="@style/TextView.Medium"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/dark_green"
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            tools:text="45%" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:max="100"
+            android:progress="0"
+            app:indicatorColor="@color/orange"
+            app:indicatorSize="@dimen/_30sdp"
+            app:trackColor="#2F0F0F0F"
+            app:trackThickness="@dimen/_2sdp" />
+
+    </FrameLayout>
+
+</layout>

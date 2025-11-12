@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="restaurants_to_explore">
+        <item quantity="zero">No Restaurants to Explore</item>
+        <item quantity="one">%d Restaurant to Explore</item>
+        <item quantity="other">%d Restaurants to Explore</item>
+    </plurals>
+
+
+</resources>

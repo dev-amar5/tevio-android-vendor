@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.tevioapp.vendor.presentation.common.base.dialog.BaseCustomDialog.Listener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round_corner_solid"
+        android:backgroundTint="@color/card_bg_dual"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/size_20">
+
+        <TextView
+            android:id="@+id/tv_Header"
+            style="@style/TextView.Header"
+            android:paddingVertical="@dimen/_15sdp"
+            android:text="@string/dark_theme"
+            android:textSize="@dimen/_15ssp" />
+
+        <RadioGroup
+            android:id="@+id/rg_theme"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_system_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp"
+                android:text="@string/system_default"
+                android:buttonTint="@color/dark_green"
+                android:textColor="@color/black"
+
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:background="@color/line_dual" />
+
+            <RadioButton
+                android:id="@+id/rb_off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp"
+                android:buttonTint="@color/dark_green"
+                android:text="@string/label_off"
+                android:textColor="@color/black"
+
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:background="@color/line_dual" />
+
+            <RadioButton
+                android:id="@+id/rb_on"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp"
+                android:text="@string/label_on"
+                android:buttonTint="@color/dark_green"
+                android:textColor="@color/black"
+
+                />
+        </RadioGroup>
+
+    </LinearLayout>
+</layout>

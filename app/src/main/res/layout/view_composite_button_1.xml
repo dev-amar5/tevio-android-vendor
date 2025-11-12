@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/button_height"
+    android:background="@drawable/bg_round_solid_3x"
+    android:backgroundTint="@color/dark_green">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="iv_one,tv_label"
+        app:flow_horizontalGap="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_one"
+        android:layout_width="@dimen/icon_size_1x"
+        android:layout_height="@dimen/icon_size_1x"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_shopping_cart"
+        app:tint="@color/white_fix" />
+
+    <TextView
+        android:id="@+id/tv_label"
+        style="@style/TextView.Regular"
+        android:textColor="@color/white_fix"
+        android:textSize="@dimen/_12ssp"
+        tools:text="Title" />
+
+    <ImageView
+        android:id="@+id/iv_end"
+        android:layout_width="@dimen/icon_size_1x"
+        android:layout_height="@dimen/icon_size_1x"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_arrow_circle_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white_fix" />
+</androidx.constraintlayout.widget.ConstraintLayout>

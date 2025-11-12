@@ -1,0 +1,141 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:outlineSpotShadowColor="@color/card_shadow_color"
+        app:cardBackgroundColor="@color/card_bg_dual"
+        app:cardCornerRadius="@dimen/card_corner_radius_medium"
+        app:cardElevation="@dimen/card_elevation_medium">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingVertical="@dimen/vertical_margin">
+
+            <ImageView
+                android:id="@+id/iv_gift"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_gift"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_peak_ho"
+                style="@style/TextView.Bold"
+                android:layout_width="@dimen/_0dp"
+                android:text="@string/peak_hour_completion_bonus"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_gift"
+                app:layout_constraintEnd_toStartOf="@+id/iv_forward"
+                app:layout_constraintStart_toEndOf="@+id/iv_gift"
+                app:layout_constraintTop_toTopOf="@+id/iv_gift" />
+
+            <ImageView
+                android:id="@+id/iv_forward"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_arrow_circle_right"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_gift"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_gift"
+                app:tint="@color/dark_green" />
+
+            <TextView
+                android:id="@+id/tv_target"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:text="@string/target_desc"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_peak_ho" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/line_dual"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_target" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/TextView.LightMedium"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="12 p.m. to 2 p.m. and 6 p.m. to 9 p.m."
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_bonus"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:outlineSpotShadowColor="@color/card_shadow_color"
+                app:cardBackgroundColor="#6D2CAF94"
+                app:cardCornerRadius="@dimen/card_corner_radius_medium"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time"
+                app:strokeColor="#2CAF94"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/horizontal_margin"
+                    android:paddingVertical="@dimen/_10sdp">
+
+                    <TextView
+                        style="@style/TextView.Bold"
+                        android:text="30 bonus"
+                        android:textColor="@color/black_fix"
+                        android:textSize="@dimen/_18ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/TextView.LightMedium"
+                        android:text="5 of 10 orders completed"
+                        android:textColor="@color/dark_green"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
